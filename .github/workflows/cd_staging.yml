@@ -10,9 +10,9 @@ jobs:
     steps:
       - run: |
           echo "${{ secrets.SECRETS_KNOWN_HOSTS }}" &> ssh_key
-          mkdir .ssh
-          ls .ssh
-          touch .ssh/known_hosts
+          mkdir /home/runner/.ssh
+          ls /home/runner/.ssh
+          touch /home/runner/.ssh/known_hosts
           echo "${{ secrets.SSH_PRIVATE_KEY }}" &> /home/runner/.ssh/known_hosts
-          chmod 700 ssh_key
+          chmod 700 /home/runner/ssh_key
           ssh -i ssh_key ubuntu@64.227.147.124 -t "cd dev/ && git pull origin main && export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin && npm install -g pnpm && pnpm install && pnpm run build && pm2 restart fe-sever && pm2 restart http-sever && pm2 restart ws-sever"
