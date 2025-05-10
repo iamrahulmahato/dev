@@ -9,11 +9,10 @@ jobs:
     name: Deploying everything to the staging cluster
     steps:
       - run: |
-          mkdir -p /home/runner/.ssh
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > /home/runner/.ssh/ssh_key
-          chmod 600 /home/runner/.ssh/ssh_key
-          echo "${{ secrets.SECRETS_KNOWN_HOSTS }}" > /home/runner/.ssh/known_hosts
-          chmod 644 /home/runner/.ssh/known_hosts
-          ssh -i /home/runner/.ssh/ssh_key -o UserKnownHostsFile=/home/runner/.ssh/known_hosts ubuntu@64.227.147.124 -t "cd dev/ && git pull origin main && export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
-
+           mkdir -p /home/runner/.ssh
+           echo "${{ secrets.SSH_PRIVATE_KEY }}" > /home/runner/.ssh/ssh_key
+           chmod 600 /home/runner/.ssh/ssh_key
+           echo "${{ secrets.SECRETS_KNOWN_HOSTS }}" > /home/runner/.ssh/known_hosts
+           chmod 644 /home/runner/.ssh/known_hosts
+           ssh -i /home/runner/.ssh/ssh_key -o UserKnownHostsFile=/home/runner/.ssh/known_hosts ubuntu@64.227.147.124 -t "cd dev/ && git pull origin main && export PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
 
