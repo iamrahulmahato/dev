@@ -9,7 +9,7 @@ jobs:
     name: Deploying everything to the staging cluster
     steps:
       - run: |
-          echo "${{ SECRETS_KNOWN_HOSTS }}" &> ssh_key
+          echo "${{ SECRETS_KNOWN_HOSTS }}" &> ~ssh_key
           mkdir -p /home/runner/.ssh
           ls /home/runner/.ssh
           touch /home/runner/.ssh/known_hosts
