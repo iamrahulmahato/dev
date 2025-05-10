@@ -10,7 +10,7 @@ jobs:
     steps:
       - run: |
           echo "${{ secrets.SECRETS_KNOWN_HOSTS }}" &> ssh_key
-          mkdir -p /home/ubuntu/.ssh
+          mkdir .ssh
           ls /home/ubuntu/.ssh
           touch /home/ubuntu/.ssh/known_hosts
           echo "${{ secrets.SSH_PRIVATE_KEY }}" &> /home/runner/.ssh/known_hosts
